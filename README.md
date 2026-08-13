@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Marvel Polls
 
-## Getting Started
+A small single-page voting app built with Next.js and TypeScript. Users
+vote on three Marvel-themed polls, see live results as percentages, and can
+change their vote at any point.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Three independent polls**, switchable via tabs
+- **Vote once per poll** — casting a vote reveals live results (a
+  percentage bar per option) that were hidden beforehand
+- **Change your vote** — swap to a different option via a dropdown;
+  the old option loses a vote, the new one gains it, and results update
+- **Leading option highlight** — the option (or options, in a tie) with
+  the most votes is marked with a super hero icon
+- **Independent poll state** — voting on one poll doesn't affect another;
+  switching tabs and back preserves your vote
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tests
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+All tests are in `__tests__/`, organized into:
+- `lib/` — unit tests for the pure percentage/winner-calculation logic
+- `components/` — unit tests for each individual components
+- `integration/` — tests covering multiple components working together
+  (voting, changing a vote, switching between polls)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Run tests with `npm test`.
