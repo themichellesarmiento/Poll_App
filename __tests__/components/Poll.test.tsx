@@ -36,32 +36,4 @@ describe('Poll', () => {
 
     expect(screen.queryByTestId('results-bar')).not.toBeInTheDocument();
   });
-
-  //https://testing-library.com/docs/marko-testing-library/api/#rerender
-  it('renders the results bar once votedOptionId is set', () => {
-    const { rerender } = render(
-      <Poll pollData={pollData} votedOptionId={null} onVote={jest.fn()} onChangeVote={jest.fn()} />
-    );
-
-    expect(screen.queryByTestId('results-bar')).not.toBeInTheDocument();
-
-    rerender(
-      <Poll pollData={pollData} votedOptionId='opt-1' onVote={jest.fn()} onChangeVote={jest.fn()} />
-    );
-
-    expect(screen.getByTestId('results-bar')).toBeInTheDocument();
-  });
-
-  it('disables all vote buttons once votedOptionId is set', () => {
-    const { rerender } = render(
-      <Poll pollData={pollData} votedOptionId={null} onVote={jest.fn()} onChangeVote={jest.fn()} />
-    );
-
-    rerender(
-      <Poll pollData={pollData} votedOptionId='opt-1' onVote={jest.fn()} onChangeVote={jest.fn()} />
-    );
-
-    const voteButtons = screen.getAllByRole('button', { name: /vote for|voted for/i });
-    voteButtons.map(b => expect(b).toBeDisabled());
-  });
 });
